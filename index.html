@@ -4,37 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Temperature Converter</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
-    <h1>Temperature Converter</h1>
+    <h1>🌡️ Temperature Converter</h1>
   </header>
 
   <main>
     <section class="converter">
       <form id="tempForm">
-        <div class="input-group">
-          <label for="celsius">
-            <img src="..." alt="Celsius Logo" />
-            Celsius
-          </label>
-          <input type="number" id="celsius" name="celsius" placeholder="Enter °C" />
-        </div>
-
-        <div class="input-group">
-          <label for="fahrenheit">
-            <img src="..." alt="Fahrenheit Logo" />
-            Fahrenheit
-          </label>
-          <input type="number" id="fahrenheit" name="fahrenheit" placeholder="Enter °F" />
+        <div id="inputContainer">
+          <!-- Input fields will be inserted here dynamically -->
         </div>
 
         <div class="button-group">
-          <button type="button" id="toF">Convert C → F</button>
-          <button type="button" id="toC">Convert F → C</button>
+          <button type="button" id="convertBtn">Convert</button>
+          <button type="button" id="reverseBtn">Reverse</button>
+          <button type="button" id="resetBtn">Reset</button>
         </div>
       </form>
+
+      <div class="formula">
+        <p><strong>Formula:</strong></p>
+        <p id="formulaText">S(°F) = (S(°C) * 9/5) + 32</p>
+      </div>
     </section>
   </main>
 
@@ -42,6 +36,6 @@
     <p>&copy; 2025 Temperature Tools</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
