@@ -4,44 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Temperature Converter</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
   <header>
-    <h1>Temperature Converter</h1>
+    <h1>
+      <img src="Asset/temperature.png" alt="Temperature Icon" class="logo-icon" />
+      Konversi Suhu
+    </h1>
   </header>
 
   <main>
     <section class="converter">
       <form id="tempForm">
-        <div class="input-group">
-          <label for="celsius">
-            <img src="..." alt="Celsius Logo" />
-            Celsius
-          </label>
-          <input type="number" id="celsius" name="celsius" placeholder="Enter °C" />
-        </div>
-
-        <div class="input-group">
-          <label for="fahrenheit">
-            <img src="..." alt="Fahrenheit Logo" />
-            Fahrenheit
-          </label>
-          <input type="number" id="fahrenheit" name="fahrenheit" placeholder="Enter °F" />
+        <div id="inputContainer">
+          <!-- Input fields will be inserted here dynamically -->
         </div>
 
         <div class="button-group">
-          <button type="button" id="toF">Convert C → F</button>
-          <button type="button" id="toC">Convert F → C</button>
+          <button type="button" id="convertBtn">Convert</button>
+          <button type="button" id="reverseBtn">Reverse</button>
+          <button type="button" id="resetBtn">Reset</button>
         </div>
       </form>
+
+      <div class="formula">
+        <p><strong>Formula:</strong></p>
+        <p id="formulaText">S(°F) = (S(°C) * 9/5) + 32</p>
+      </div>
+
+      <!-- Toggle Button -->
+      <div class="info-toggle">
+        <button id="toggleInfo">
+          <img src="Asset/Lamp.png" alt="Lamp Icon" width="20" />
+          <span>Lihat Penjelasan</span>
+        </button>
+      </div>
+
+      <!-- Penjelasan Konversi -->
+      <article id="conversionInfo" class="hidden">
+        <h2>Cara Konversi Dari Celsius (°C) ke Fahrenheit (°F)</h2>
+        <p>
+          Suhu <strong>S</strong> dalam derajat Fahrenheit (°F) sama dengan suhu
+          <strong>S</strong> dalam derajat Celsius (°C) kali <strong>9/5</strong> tambah <strong>32</strong>.
+        </p>
+        <p><code>S(°F) = (S(°C) × 9/5) + 32</code></p>
+        <p>atau</p>
+        <p><code>S(°F) = (S(°C) × 1.8) + 32</code></p>
+      </article>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Temperature Tools</p>
+    <p>&copy; 2025 Projek Konversi Suhu</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="JS/script.js"></script>
 </body>
 </html>
