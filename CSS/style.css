@@ -12,6 +12,15 @@ header, footer {
   text-align: center;
 }
 
+.logo-icon {
+  width: 64px;
+  height: 64px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border: solid rgb(255, 255, 255) 0.2rem;
+  border-radius: 50%;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -69,7 +78,48 @@ button:hover {
 }
 
 .formula {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0f8ff;
+  border-left: 4px solid #2196f3;
+  font-family: monospace;
+}
+
+.formula p {
+  margin: 0.5rem 0;
+}
+
+.info-toggle {
   margin-top: 1.5rem;
-  font-size: 1rem;
   text-align: center;
+}
+
+#toggleInfo {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#toggleInfo:hover {
+  background-color: #218838;
+}
+
+article {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+article.hidden {
+  display: none;
 }

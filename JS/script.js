@@ -3,6 +3,10 @@ const convertBtn = document.getElementById("convertBtn");
 const reverseBtn = document.getElementById("reverseBtn");
 const resetBtn = document.getElementById("resetBtn");
 const formulaText = document.getElementById("formulaText");
+const toggleInfoBtn = document.getElementById("toggleInfo");
+const conversionInfo = document.getElementById("conversionInfo");
+const toggleText = toggleInfoBtn.querySelector("span");
+
 
 let isCelsiusToFahrenheit = true;
 
@@ -18,46 +22,30 @@ function createInput(label, id, placeholder, disabled = false) {
 
 function renderInputs() {
   inputContainer.innerHTML = "";
-  const topInput = isCelsiusToFahrenheit
-    ? createInput("Celsius (°C)", "celsius", "Enter °C")
-    : createInput("Fahrenheit (°F)", "fahrenheit", "Enter °F");
-  const bottomInput = isCelsiusToFahrenheit
-    ? createInput("Fahrenheit (°F)", "fahrenheit", "Converted °F", true)
-    : createInput("Celsius (°C)", "celsius", "Converted °C", true);
+
+  let topInput, bottomInput;
+
+  if (isCelsiusToFahrenheit) {
+    topInput = createInput("Celsius (°C)", "celsius", "Masukan °C");
+    bottomInput = createInput("Fahrenheit (°F)", "fahrenheit", "Konversi °F", true);
+  } else {
+    topInput = createInput("Fahrenheit (°F)", "fahrenheit", "Masukan °F");
+    bottomInput = createInput("Celsius (°C)", "celsius", "Konversi °C", true);
+  }
 
   inputContainer.appendChild(topInput);
   inputContainer.appendChild(bottomInput);
 }
 
-function convertTemperature() {
-  const celsiusInput = document.getElementById("celsius");
-  const fahrenheitInput = document.getElementById("fahrenheit");
-
-  if (isCelsiusToFahrenheit) {
-    const c = parseFloat(celsiusInput.value);
-    if (!isNaN(c)) {
-      fahrenheitInput.value = ((c * 9) / 5 + 32).toFixed(2);
-      formulaText.innerText = `S(°F) = (${c} * 9/5) + 32`;
-    } else {
-      alert("Please enter a valid Celsius value.");
-    }
-  } else {
-    const f = parseFloat(fahrenheitInput.value);
-    if (!isNaN(f)) {
-      celsiusInput.value = (((f - 32) * 5) / 9).toFixed(2);
-      formulaText.innerText = `S(°C) = (${f} - 32) * 5/9`;
-    } else {
-      alert("Please enter a valid Fahrenheit value.");
-    }
-  }
-}
 
 function reverseInputs() {
   isCelsiusToFahrenheit = !isCelsiusToFahrenheit;
   renderInputs();
-  formulaText.innerText = isCelsiusToFahrenheit
-    ? "S(°F) = (S(°C) * 9/5) + 32"
-    : "S(°C) = (S(°F) - 32) * 5/9";
+  if (isCelsiusToFahrenheit) {
+    formulaText.innerText = "S(°F) = (S(°C) * 9/5) + 32";
+  } else {
+    formulaText.innerText = "S(°C) = (S(°F) - 32) * 5/9";
+  }  
 }
 
 function resetAll() {
@@ -67,9 +55,36 @@ function resetAll() {
   celsiusInput.value = "";
   fahrenheitInput.value = "";
 
-  formulaText.innerText = isCelsiusToFahrenheit
-    ? "S(°F) = (S(°C) * 9/5) + 32"
-    : "S(°C) = (S(°F) - 32) * 5/9";
+  if (isCelsiusToFahrenheit) {
+    formulaText.innerText = "S(°F) = (S(°C) * 9/5) + 32";
+  } else {
+    formulaText.innerText = "S(°C) = (S(°F) - 32) * 5/9";
+  }  
+}
+
+function convertTemperature() {
+  const celsiusInput = document.getElementById("celsius");
+  const fahrenheitInput = document.getElementById("fahrenheit");
+
+  if (isCelsiusToFahrenheit) {
+    const c = parseFloat(celsiusInput.value);
+    if (!isNaN(c)) {
+      const result = ((c * 9) / 5 + 32).toFixed(2);
+      fahrenheitInput.value = result;
+      formulaText.innerText = `S(°F) = (${c} × 9/5) + 32 = ${result}`;
+    } else {
+      alert("Please enter a valid Celsius value.");
+    }
+  } else {
+    const f = parseFloat(fahrenheitInput.value);
+    if (!isNaN(f)) {
+      const result = (((f - 32) * 5) / 9).toFixed(2);
+      celsiusInput.value = result;
+      formulaText.innerText = `S(°C) = (${f} - 32) × 5/9 = ${result}`;
+    } else {
+      alert("Please enter a valid Fahrenheit value.");
+    }
+  }
 }
 
 
@@ -77,5 +92,13 @@ convertBtn.addEventListener("click", convertTemperature);
 reverseBtn.addEventListener("click", reverseInputs);
 resetBtn.addEventListener("click", resetAll);
 
-// Initial load
+toggleInfoBtn.addEventListener("click", () => {
+  conversionInfo.classList.toggle("hidden");
+
+  if (conversionInfo.classList.contains("hidden")) {
+    toggleText.textContent = "Lihat Penjelasan";
+  } else {
+    toggleText.textContent = "Sembunyikan Penjelasan";
+  }
+});
 renderInputs();
