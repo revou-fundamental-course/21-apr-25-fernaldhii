@@ -73,7 +73,7 @@ function convertTemperature() {
       fahrenheitInput.value = result;
       formulaText.innerText = `S(°F) = (${c} × 9/5) + 32 = ${result}`;
     } else {
-      alert("Please enter a valid Celsius value.");
+      alert("Silakan masukkan nilai Celsius yang valid.");
     }
   } else {
     const f = parseFloat(fahrenheitInput.value);
@@ -82,7 +82,7 @@ function convertTemperature() {
       celsiusInput.value = result;
       formulaText.innerText = `S(°C) = (${f} - 32) × 5/9 = ${result}`;
     } else {
-      alert("Please enter a valid Fahrenheit value.");
+      alert("Silakan masukkan nilai Farenheit yang valid.");
     }
   }
 }
